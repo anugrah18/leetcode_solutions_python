@@ -1,0 +1,26 @@
+import random
+
+class Solution:
+
+    def __init__(self, w):
+        self.prefix_sums = []
+        prefix_sum = 0
+        for weight in w:
+            prefix_sum += weight
+            self.prefix_sums.append(prefix_sum)
+        self.total_sum = prefix_sum
+
+    def pickIndex(self):
+        target = self.total_sum * random.random()
+
+        low, high = 0, len(self.prefix_sums)
+        while low < high:
+            mid = low + (high - low) // 2
+            if target > self.prefix_sums[mid]:
+                low = mid + 1
+            else:
+                high = mid
+        return low
+
+X= Solution([1,4])
+print(X.pickIndex())
