@@ -5,7 +5,7 @@ class Solution:
         for i in range(len(s)):
             # Expand around a single character as the middle of the palindrome.
             self.expandFromMiddle(s, i, i)
-            # Expand around two characters as the middle of the palindrome
+            # Expand around two characters as the middle of the palindrome.
             self.expandFromMiddle(s, i, i + 1)
         return self.count
 
