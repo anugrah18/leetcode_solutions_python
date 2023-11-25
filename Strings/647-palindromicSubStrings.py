@@ -11,7 +11,7 @@ class Solution:
 
     def expandFromMiddle(self, s, i, j):
         while (i >= 0 and j < len(s) and s[i] == s[j]):
-            # Expand as long as the characters at the left and right indices are the same
+            # Expand as long as the characters at the left and right indices are the same.
             self.count += 1
             i -= 1
             j += 1
