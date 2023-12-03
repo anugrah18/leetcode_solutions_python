@@ -6,6 +6,8 @@ class Solution:
         stack =[]
 
         for i,t in enumerate(T):
+            # While the stack is not empty and the current temperature is greater than
+            # the temperature at the top of the stack
             while stack and t>stack[-1][0]:
                 temp,ind = stack.pop()
                 ans[ind] = i-ind
@@ -14,14 +16,15 @@ class Solution:
         return ans
 
 
-
-
     def dailyTemperatures_II(self,T):
         # From behind
         ans =[0]*len(T)
         stack =[]
 
+        # Iterate backward through the temperatures
         for i in range(len(T)-1,-1,-1):
+            # While the stack is not empty and the current temperature is greater than
+            # or equal to the temperature at the top of the stack
             while(stack and T[i]>=T[stack[-1]]):
                 stack.pop()
             if stack:
