@@ -6,22 +6,26 @@ class ListNode:
         self.next = next
 class Solution:
     def mergeKLists(self, lists) -> ListNode:
-        q = []
-        head = point = ListNode(0)
+        q = []  # Initialize a priority queue (min-heap)
+        head = point = ListNode(0)  # Create a dummy head for the result list
+
+        # Push the first node of each list into the heap
         for l in lists:
             if l:
-                # inserted 'id of l' in heap as l.val may be not unique for comparasion
+                # Insert (value, id of node, node) into the heap
+                # The id is used to avoid comparison issues when values are the same
                 heapq.heappush(q, (l.val, id(l), l))
 
+        # Extract the smallest element from the heap and add it to the result list
         while len(q) != 0:
-            val, _id, node = heapq.heappop(q)
-            point.next = ListNode(val)
-            point = point.next
-            node = node.next
-            if node:
+            val, _id, node = heapq.heappop(q)  # Pop the smallest element
+            point.next = ListNode(val)  # Add the smallest value to the result list
+            point = point.next  # Move the pointer forward
+            node = node.next  # Move to the next node in the list
+            if node:  # If the list is not empty, push the next node into the heap
                 heapq.heappush(q, (node.val, id(node), node))
 
-        return head.next
+        return head.next  # Return the merged list, skipping the dummy head
 
 
 l1 = ListNode(1)
@@ -41,3 +45,7 @@ head = X.mergeKLists([l1,l2,l3])
 while(head):
     print(head.val)
     head = head.next
+
+
+# Time Complexity : O(Nlogk) , where k is number of lists , N is the total number of nodes across all lists.
+# Space Complexity : O(k)
