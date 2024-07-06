@@ -21,18 +21,18 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        res = []
+        res = []  # List to store the serialized tree
 
         def dfs(node):
-            if not node:
-                res.append("N")
+            if not node:  # Base case: if the current node is None
+                res.append("N")  # Append "N" to represent None
                 return
-            res.append(str(node.val))
-            dfs(node.left)
-            dfs(node.right)
+            res.append(str(node.val))  # Append the value of the node as a string
+            dfs(node.left)  # Recursively serialize the left subtree
+            dfs(node.right)  # Recursively serialize the right subtree
 
-        dfs(root)
-        return ",".join(res)
+        dfs(root)  # Start the DFS traversal from the root
+        return ",".join(res)  # Join the list into a single string
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -40,20 +40,20 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        vals = data.split(",")
-        self.i = 0
+        vals = data.split(",")  # Split the string into a list of values
+        self.i = 0  # Initialize an index to keep track of the current position in the list
 
         def dfs():
-            if vals[self.i] == "N":
-                self.i += 1
-                return None
-            node = TreeNode(int(vals[self.i]))
-            self.i += 1
-            node.left = dfs()
-            node.right = dfs()
-            return node
+            if vals[self.i] == "N":  # Base case: if the current value is "N"
+                self.i += 1  # Move to the next value
+                return None  # Return None to represent a null node
+            node = TreeNode(int(vals[self.i]))  # Create a new node with the current value
+            self.i += 1  # Move to the next value
+            node.left = dfs()  # Recursively deserialize the left subtree
+            node.right = dfs()  # Recursively deserialize the right subtree
+            return node  # Return the node
 
-        return dfs()
+        return dfs()  # Start the DFS traversal from the first value in the list
 
 
 root=TreeNode(1)
@@ -67,3 +67,6 @@ Y = X.serialize(root)
 Z = X.deserialize(Y)
 print(Y)
 print(dfs(Z))
+
+# Time Complexity : O(N)
+# Space Complexity : O(N)
