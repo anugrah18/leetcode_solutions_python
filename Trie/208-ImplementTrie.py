@@ -1,39 +1,35 @@
 class TrieNode:
     def __init__(self):
-        self.children = {}
-        self.endOfWord = False
-
+        self.children = {}  # Dictionary to store child nodes
+        self.endOfWord = False  # Boolean flag to indicate the end of a word
 
 class Trie:
-
     def __init__(self):
-        self.root = TrieNode()
+        self.root = TrieNode()  # Initialize the trie with a root node
 
     def insert(self, word: str) -> None:
-        curr = self.root
-        for c in word:
-            if c not in curr.children:
-                curr.children[c] = TrieNode()
-            curr = curr.children[c]
-        curr.endOfWord = True
+        curr = self.root  # Start from the root node
+        for c in word:  # Iterate over each character in the word
+            if c not in curr.children:  # If the character is not in the current node's children
+                curr.children[c] = TrieNode()  # Add a new TrieNode as a child
+            curr = curr.children[c]  # Move to the child node
+        curr.endOfWord = True  # Mark the end of the word
 
     def search(self, word: str) -> bool:
-        curr = self.root
-        for c in word:
-            if c not in curr.children:
-                return False
-            curr = curr.children[c]
-
-        return curr.endOfWord
+        curr = self.root  # Start from the root node
+        for c in word:  # Iterate over each character in the word
+            if c not in curr.children:  # If the character is not found
+                return False  # The word does not exist in the trie
+            curr = curr.children[c]  # Move to the child node
+        return curr.endOfWord  # Return True if the current node marks the end of the word
 
     def startsWith(self, prefix: str) -> bool:
-        curr = self.root
-        for c in prefix:
-            if c not in curr.children:
-                return False
-            curr = curr.children[c]
-
-        return True
+        curr = self.root  # Start from the root node
+        for c in prefix:  # Iterate over each character in the prefix
+            if c not in curr.children:  # If the character is not found
+                return False  # The prefix does not exist in the trie
+            curr = curr.children[c]  # Move to the child node
+        return True  # If all characters in the prefix are found, return True
 
 trie = Trie()
 print(trie.insert("apple"))
