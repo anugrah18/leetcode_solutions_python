@@ -37,3 +37,6 @@ print(medianFinder.addNum(2))
 print(medianFinder.findMedian())
 print(medianFinder.addNum(3))
 print(medianFinder.findMedian())
+
+# Time Complexity : O(LogN)
+# Space Complexity : O(N)
