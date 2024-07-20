@@ -1,20 +1,20 @@
-class Solution(object):
+class Solution:
     def plusOne(self, digits):
+        # Initialize carry to 1 because we are adding one to the number
+        agg, carry = 0, 1
 
-        i = len(digits) - 1
-        carry = 1
-        while (i >= 0):
+        # Iterate over the digits from the last to the first
+        for i in range(len(digits) - 1, -1, -1):
+            # Calculate the new value at the current position
+            agg = (carry + digits[i]) % 10
+            # Calculate the carry for the next position
+            carry = (carry + digits[i]) // 10
+            # Update the digit at the current position
+            digits[i] = agg
 
-            sum = int((digits[i] + carry) % 10)
-            carry = int((digits[i] + carry) / 10)
-            digits[i] = sum
+        # If there is a carry left after the last digit, add it to the front
+        return digits if carry == 0 else [carry] + digits
 
-            if (carry == 0):
-                return digits
-            i = i - 1
-
-        digits.insert(0, carry)
-        return digits
 
 X =Solution()
 print(X.plusOne([9,9]))
