@@ -1,11 +1,21 @@
 class Solution:
     def minMoves(self, nums) -> int:
+        # Sort the list of numbers
         nums = sorted(nums)
-        count = 0
-        for i in range(len(nums) - 1, 0, -1):
-            count += nums[i] - nums[0]
 
-        return count
+        # Initialize the counter for the number of moves
+        ans = 0
+        # Initialize the index of the smallest element
+        i = 0
+
+        # Iterate from the second element to the last element
+        for j in range(1, len(nums)):
+            # Add the difference between the current element and the smallest element to the count
+            ans += nums[j] - nums[i]
+
+        # Return the total number of moves
+        return ans
+
 
 X =Solution()
 print(X.minMoves([1,2,3]))
