@@ -27,5 +27,5 @@ X = Solution()
 print(X.eraseOverlapIntervals([[1,2],[2,3],[3,4],[1,3]]))
 
 # Time Complexity = O(NlogN)
-# Space Complexity = O(1)
+# Space Complexity = O(N)
 
