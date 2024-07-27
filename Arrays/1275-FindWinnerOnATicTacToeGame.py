@@ -28,7 +28,7 @@ class Solution:
             return "Draw"  # All cells are filled and no winner
         else:
             return "Pending"  # There are still moves to be made
-        
+
 X = Solution()
 print(X.tictactoe([[0,0],[2,0],[1,1],[2,1],[2,2]]))
 
