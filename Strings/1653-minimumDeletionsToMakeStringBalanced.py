@@ -1,26 +1,28 @@
-from collections import Counter
-
-
 class Solution:
-    def minimumDeletions(self, s):
-        dict = Counter(s)
+    def minimumDeletions(self, s: str) -> int:
+        ht = {}
 
-        best = len(s)
-        a = dict["a"]
+        for c in s:
+            ht[c] = ht.get(c, 0) + 1
+
+        a = ht.get('a', 0)
         b = 0
+        ans = len(s)
 
-        for x in s:
-            best = min(best, b + a)
-            if x == "a":
+        for c in s:
+            ans = min(ans, a + b)
+            if c == 'a':
                 a -= 1
             else:
                 b += 1
 
-        best = min(best, b + a)
-        return best
+        ans = min(ans, a + b)
+
+        return ans
+
 
 X = Solution()
 print(X.minimumDeletions("aababbab"))
 
 # Time Complexity : O(N)
-# Space Complexity : O(1)
+# Space Complexity : O(N)

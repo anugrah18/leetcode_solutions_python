@@ -19,5 +19,5 @@ class Solution:
 X =Solution()
 print(X.countSubstrings("abc"))
 
-# Time Complexity : O(N)
+# Time Complexity : O(N^2)
 # Space Complexity: O(1)
