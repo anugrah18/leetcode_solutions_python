@@ -13,17 +13,17 @@ class ListNode(object):
 
 class Solution(object):
     def reverseList(self, head):
+        prev = None  # Initialize the previous pointer as None
+        curr = head  # Start with the current pointer at the head of the list
 
-        pastNode = None
-        currentNode = head
+        # Iterate through the list
+        while curr:
+            nxt = curr.next  # Temporarily store the next node
+            curr.next = prev  # Reverse the current node's pointer to the previous node
+            prev = curr  # Move the previous pointer to the current node
+            curr = nxt  # Move the current pointer to the next node
 
-        while currentNode:
-            nextNode = currentNode.next
-            currentNode.next = pastNode
-            pastNode = currentNode
-            currentNode = nextNode
-        head = pastNode
-        return head
+        return prev  # Return the new head of the reversed list, which is the last non-null node
 
 list = ListNode(1)
 list.next = ListNode(2)

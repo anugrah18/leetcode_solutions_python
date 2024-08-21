@@ -6,19 +6,26 @@ class ListNode(object):
 
 class Solution(object):
     def partition(self, head, x):
-        res1 = first = ListNode(0)
-        res2 = second = ListNode(0)
+        # Create two dummy nodes to start the two partitions
+        res1 = first = ListNode(0)  # This will hold nodes less than x
+        res2 = second = ListNode(0)  # This will hold nodes greater than or equal to x
 
-        while (head):
+        # Traverse the original linked list
+        while head:
+            # If the current node's value is less than x, add it to the first partition
             if head.val < x:
                 res1.next = ListNode(head.val)
                 res1 = res1.next
+            # If the current node's value is greater than or equal to x, add it to the second partition
             else:
                 res2.next = ListNode(head.val)
                 res2 = res2.next
+            # Move to the next node in the original list
             head = head.next
 
+        # Connect the end of the first partition to the beginning of the second partition
         res1.next = second.next
+        # Return the start of the first partition, which is the new head of the modified list
         return first.next
 
 node = ListNode(1)
