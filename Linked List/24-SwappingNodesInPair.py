@@ -11,23 +11,29 @@ class ListNode(object):
 
 class Solution(object):
     def swapPairs(self, head):
-
+        # Create a dummy node to serve as the previous node for the head.
         dummy = ListNode(-1)
         dummy.next = head
-        prev_node= dummy
+        prev_node = dummy
 
-        while(head and head.next):
+        # Traverse the list in pairs
+        while head and head.next:
+            # Identify the nodes to be swapped
             first_node = head
             second_node = head.next
 
+            # Perform the swap by adjusting the pointers
             prev_node.next = second_node
             first_node.next = second_node.next
             second_node.next = first_node
 
+            # Move the prev_node and head pointers forward to the next pair
             prev_node = first_node
             head = first_node.next
 
+        # Return the new head of the list (next node after dummy)
         return dummy.next
+
 
 LL = ListNode(1)
 LL.next = ListNode(2)

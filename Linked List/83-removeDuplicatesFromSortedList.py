@@ -4,16 +4,23 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def deleteDuplicates(self,head):
+    def deleteDuplicates(self, head):
         curr = head
 
-        while(curr and curr.next):
-            if(curr.val == curr.next.val):
+        # Traverse the linked list
+        while curr and curr.next:
+            # If the current node's value is the same as the next node's value
+            if curr.val == curr.next.val:
+                # Skip the next node by pointing the current node's next to the node after the next
                 curr.next = curr.next.next
             else:
+                # Move to the next node
                 curr = curr.next
 
+        # Return the modified list with duplicates removed
         return head
+
+
 X= Solution()
 head= ListNode(1)
 head.next = ListNode(2)
