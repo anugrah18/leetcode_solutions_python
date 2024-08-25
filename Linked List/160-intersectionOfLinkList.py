@@ -3,49 +3,36 @@ class ListNode(object):
         self.val = x
         self.next = None
 
-class Solution(object):
-    def getIntersectionNode_I(self, headA, headB):
-        # Time Complexity : O(N+M) , N = nodes in list A, M = node in list B
-        # Space Complexity : O(M)
 
-        head1 = headA
-        head2 = headB
-        dict = {}
-        while (head1 != None):
-            if (head1 not in dict):
-                dict[head1] = "occupied"
-            head1 = head1.next
-
-        while (head2 != None):
-            if (head2 in dict):
-                return head2
-            head2 = head2.next
-
-        return None
-
-    def getIntersectionNode_II(self, headA: ListNode, headB: ListNode):
-        # Time Complexity : O(N+M) , N = nodes in list A, M = node in list B
-        # Space Complexity : O(1)
-
+class Solution:
+    def getIntersectionNode(self, headA, headB):
+        # Initialize two pointers, one for each list
         ptr1 = headA
         ptr2 = headB
 
-        if ptr1 == None or ptr2 == None:
+        # If either list is empty, there can be no intersection
+        if ptr1 is None or ptr2 is None:
             return None
 
+        # Traverse both lists
         while ptr1 != ptr2:
+            # Move both pointers one step at a time
             ptr1 = ptr1.next
             ptr2 = ptr2.next
 
+            # If they meet at the same node, that node is the intersection
             if ptr1 == ptr2:
                 return ptr1
 
-            if ptr1 == None:
+            # If ptr1 reaches the end of list A, switch to the beginning of list B
+            if ptr1 is None:
                 ptr1 = headB
 
-            if ptr2 == None:
+            # If ptr2 reaches the end of list B, switch to the beginning of list A
+            if ptr2 is None:
                 ptr2 = headA
 
+        # Either both pointers meet at the intersection, or both become None (no intersection)
         return ptr1
 
 LL1 = ListNode(4)
@@ -58,7 +45,7 @@ LL2.next = ListNode(6)
 LL2.next.next = LL1.next
 
 X = Solution()
-print(X.getIntersectionNode_I(LL1,LL2).val)
-print(X.getIntersectionNode_II(LL1,LL2).val)
+print(X.getIntersectionNode(LL1,LL2).val)
 
-
+# Time Complexity : O(N+M) , N = nodes in list A, M = node in list B
+# Space Complexity : O(1)

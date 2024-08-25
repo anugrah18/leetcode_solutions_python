@@ -6,6 +6,7 @@ class Node:
 
 
 class Solution:
+    # In-place conversion of Binary Search Tree to a circular doubly linked list
     def treeToDoublyListInPlace(self,root: Node) -> Node:
         # In place solution.
         # Time Complexity : O(N)
@@ -13,27 +14,33 @@ class Solution:
         if not root:
             return
         def dfs(node):
+            # Use nonlocal to modify head and tail defined in the outer function.
             nonlocal head,tail
             if not node:
                 return
+            # In-order traversal: left, node, right
             dfs(node.left)
+            # Link the previous node (tail) with the current node
             if tail:
                 tail.right = node
                 node.left = tail
             else:
+                # If this is the first node, assign it to head
                 head = node
+            # Move the tail to the current node
             tail = node
             dfs(node.right)
 
         head,tail = None,None
 
         dfs(root)
+        # Perform in-order traversal to link nodes
         head.left = tail
         tail.right = head
 
         return head
 
-
+    # Not in-place conversion using an auxiliary list
     def treeToDoublyList(self, root: 'Node') -> 'Node':
         # NOT in place involves creating a new linked list.
         # In place solution.
@@ -42,6 +49,7 @@ class Solution:
         if (root == None):
             return None
 
+        # Helper function for in-order traversal that fills the list with node values
         def Prefix(root, res):
             if not root:
                 return
@@ -56,8 +64,10 @@ class Solution:
         dummy_tail.left = dummy_head
 
         linear_tree = []
+        # Perform in-order traversal and store node values in linear_tree
         Prefix(root, linear_tree)
 
+        # Create the doubly linked list from the stored values
         for num in linear_tree:
             temp = Node(num)
             temp.right = current.right

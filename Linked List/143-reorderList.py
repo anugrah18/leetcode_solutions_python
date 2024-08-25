@@ -28,6 +28,7 @@ class Solution:
         # Merge two sorted Link List
         first, second = head, prev
 
+        # Swap the positions of 'first' and 'second' nodes in pairs
         while second.next:
             temp = first.next
             first.next = second
