@@ -59,5 +59,5 @@ while curr:
     print(f"Node Value: {curr.val}, Random points to: {random_val}")
     curr = curr.next
 
-# Time Complexity = O(N)
-# Space Complexity = O(N)
+# Time Complexity : O(N)
+# Space Complexity : O(N)
