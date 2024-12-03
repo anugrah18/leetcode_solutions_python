@@ -10,11 +10,13 @@ class Solution:
         if not root:
             return False
 
+        # Check if the current root's left and right children are x and y (or y and x)
         return ((root.left and root.left.val == x and root.right and root.right.val == y) or
                 (root.left and root.left.val == y and root.right and root.right.val == x) or
                 self.isSibling(root.left, x, y) or
                 self.isSibling(root.right, x, y))
 
+    # Helper function to find the level (depth) of a given node `p` in the tree
     def level(self, root, p, lvl):
         if not root:
             return 0
@@ -30,6 +32,7 @@ class Solution:
         return self.level(root.right, p, lvl + 1)
 
     def isCousins(self, root, x: int, y: int) -> bool:
+        # Check if both nodes are at the same level and are not siblings
         if ((self.level(root, x, 0) == self.level(root, y, 0)) and
                 not (self.isSibling(root, x, y))):
             return True
