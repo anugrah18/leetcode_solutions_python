@@ -21,4 +21,4 @@ print(X.findDuplicates([4,3,2,7,8,2,3,1]))
 
 
 # Time Complexity : O(N)
-# Space Complexity : O(N)
+# Space Complexity : O(1)
