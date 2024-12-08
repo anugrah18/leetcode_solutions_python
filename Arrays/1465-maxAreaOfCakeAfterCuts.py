@@ -29,5 +29,5 @@ X = Solution()
 print(X.maxArea(5,4,[1,2,4],[1,3]))
 
 # Time Complexity : O(Nlog(N) + Mlog(M))
-# Space complexity : O(N)
+# Space complexity : O(1)
 

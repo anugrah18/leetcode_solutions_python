@@ -1,29 +1,45 @@
 class Solution(object):
     def findItinerary(self, tickets):
+        # Create a graph to represent the flight connections
+        graph = {}  # Dictionary where keys are departure airports and values are lists of destination airports
+        ans = []  # List to store the final itinerary in reverse order
 
-        graph = {}
-        ans = []
-
+        # Build the graph from the tickets
         for ticket in tickets:
-            if (ticket[0] not in graph):
+            # If the departure airport is not already in the graph, initialize it
+            if ticket[0] not in graph:
                 graph[ticket[0]] = []
-                graph[ticket[0]].append(ticket[1])
-            else:
-                graph[ticket[0]].append(ticket[1])
+            # Append to the existing list of destinations
+            graph[ticket[0]].append(ticket[1])
 
-        #For Lexical sorting
+        # Ensure lexical (alphabetical) order of destinations for each departure airport
         for node in graph:
-            graph[node] = sorted(graph[node])
+            graph[node] = sorted(graph[node])  # Sort the list of destinations alphabetically
 
+        # Depth-first search (DFS) to build the itinerary
         def dfs(src):
-            if (src in graph):
-                while (graph[src]):
-                    #poping the neighbors from beginning for lexical ordering
+            # Check if the source airport has destinations
+            if src in graph:
+                # While there are destinations left for this airport
+                while graph[src]:
+                    # Pop the first (smallest lexicographical) destination and continue the DFS
                     dfs(graph[src].pop(0))
+            # Append the current airport to the answer in reverse order
             ans.append(src)
 
+        # Start the DFS from 'JFK' as it is always the starting point
         dfs('JFK')
-        return (ans[::-1])
+        # Reverse the itinerary to get the correct order and return it
+        return ans[::-1]
 
+# Example usage:
 X = Solution()
 print(X.findItinerary([["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]))
+# Output: ['JFK', 'MUC', 'LHR', 'SFO', 'SJC']
+
+# Time Complexity: O(N log N)
+# - Sorting the destinations for each airport takes O(N log N), where N is the number of tickets.
+# - DFS traverses each ticket once, which takes O(N).
+
+# Space Complexity: O(N)
+# - The graph and answer list use space proportional to the number of tickets.
