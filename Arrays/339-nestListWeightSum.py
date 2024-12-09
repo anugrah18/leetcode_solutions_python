@@ -10,6 +10,7 @@ class Solution:
         def dfs(lt,lvl):
             ans = 0
             for e in lt:
+                # For leetcode use e.isInteger()
                 if isinstance(e,int):
                     # If the element is an integer, multiply it by its depth level
                     # and add the result to the accumulated sum.

@@ -11,6 +11,7 @@ class Solution:
         def depth(nestedList):
             curr_depth = 1
             for x in nestedList:
+                # For leetcode use e.isInteger()
                 if not isinstance(x, int):
                     # If x is a list, recursively find the maximum depth of the list
                     # For LeetCode, use x.getList()
@@ -24,6 +25,7 @@ class Solution:
         def dfs(lt, lvl, max_depth):
             ans = 0
             for e in lt:
+                # For leetcode use e.isInteger()
                 if isinstance(e, int):
                     # If the element is an integer, multiply it by the weight based on its depth
                     # For LeetCode, use e.getInteger()
