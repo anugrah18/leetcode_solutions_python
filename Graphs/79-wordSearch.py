@@ -40,4 +40,6 @@ X = Solution()
 print(X.exist([["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]],"ABCCED"))
 
 # Time Complexity : O(M*N*4^L) , M = num of rows , N = num of columns , L = length of word
+# In the worst case, every DFS call explores 4 branches for L levels, resulting in O(4^L) calls per starting point.
+
 # Space Complexity : O(L)

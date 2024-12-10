@@ -27,4 +27,4 @@ X = Solution()
 print(X.insert([[1,3],[6,9]],[2,5]))
 
 # Time Complexity : O(N)
-# Space Complexity : O(N)
+# Space Complexity : O(1)
