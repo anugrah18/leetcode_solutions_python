@@ -23,4 +23,4 @@ X = Solution()
 print(X.replaceElements([17,18,5,4,6,1]))
 
 # Time Complexity : O(N)
-# Space Complexity : O(1)
+# Space Complexity : O(N)
