@@ -46,3 +46,6 @@ class Solution(object):
 X = Solution()
 print(X.productExceptSelfInThreePasses([1, 2, 3, 4, 5]))
 print(X.productExceptSelfInTwoPasses([1, 2, 3, 4, 5]))
+
+# Time Complexity : O(N)
+# Space Complexity : O(N)
