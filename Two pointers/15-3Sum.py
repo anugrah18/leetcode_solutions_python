@@ -23,10 +23,10 @@ class Solution(object):
                 elif (nums[i] + nums[j] + nums[k] > 0):
                     # If sum is greater than zero, move the right pointer
                     k = k - 1
-        return ans
+        return list(ans)
 
 X = Solution()
 print(X.threeSum([-1,0,1,2,-1,-4]))
 
-# Time Complexity : O(N)
+# Time Complexity : O(N^2)
 # Space Complexity : O(N)
