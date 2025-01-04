@@ -1,26 +1,22 @@
 class Solution:
     def search(self, nums, target):
-        # Define a recursive binary search function
-        def binarySearch(nums, target, i, j):
-            # Calculate mid index
-            mid = (i + j) // 2
-
-            # Base case: If indices are inverted, target is not found
-            if i > j:
-                return -1
-
-            # Check if the target is found at the mid index
-            if target == nums[mid]:
+        # Initialize two pointers: left (l) and right (r)
+        l, r = 0, len(nums) - 1
+        # Perform binary search until pointers meet or cross
+        while l <= r:
+            mid = (l + r) // 2
+            # Check if the target is found at the middle index
+            if nums[mid] == target:
                 return mid
-            # If the target is smaller, search in the left half
-            elif nums[mid] > target:
-                return binarySearch(nums, target, i, mid - 1)
-            # If the target is larger, search in the right half
+            # If the target is smaller than the middle value
+            # Narrow the search range to the left half
+            if nums[mid] > target:
+                r = mid - 1
             else:
-                return binarySearch(nums, target, mid + 1, j)
-
-        # Call the binary search function with initial indices
-        return binarySearch(nums, target, 0, len(nums) - 1)
+                # If the target is greater, narrow to the right half
+                l = mid + 1
+        # If the target is not found, return -1
+        return -1
 
 
 X = Solution()
