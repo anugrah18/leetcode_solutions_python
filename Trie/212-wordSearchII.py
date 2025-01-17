@@ -51,5 +51,5 @@ class Solution:
 X= Solution()
 print(X.findWords([["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]],["oath","pea","eat","rain"]))
 
-# Time Complexity : O(N*M*L) , Where L is length of word, N = num of rows, M = num of cols
-# Space Complexity: O(N*M)
+# Time Complexity : O(N*M*4^L) , Where L is length of word, N = num of rows, M = num of cols
+# Space Complexity: O(N*L)
