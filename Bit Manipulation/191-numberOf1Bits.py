@@ -11,5 +11,5 @@ class Solution:
 X = Solution()
 print(X.hammingWeight(11))
 
-# Time Complexity : O(N) , N = integer whose bits are to be counted
+# Time Complexity : O(LogN) , N = integer whose bits are to be counted
 # Space Complexity : O(1)
