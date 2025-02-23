@@ -38,6 +38,10 @@ class Solution:
 X = Solution()
 print(X.maxSlidingWindow([1,3,-1,-3,5,3,6,7],3))
 
+# Time complexity : O(N)
+# Space complexity : O(N)
+
+
 
 
 

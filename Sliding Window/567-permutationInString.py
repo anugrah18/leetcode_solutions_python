@@ -53,3 +53,6 @@ class Solution:
 
 X= Solution()
 print(X.checkInclusion( "ab","eidbaooo"))
+
+# Time complexity : O(N)
+# Space complexity : O(1)
