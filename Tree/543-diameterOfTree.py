@@ -9,41 +9,27 @@ class TreeNode(object):
 
 # Solution class to compute the diameter of a binary tree
 class Solution(object):
-    ans = 0  # Class variable to store the maximum diameter found
+    diameter = 0
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
 
-    def diameterOfBinaryTree(self, root):
-        # Function to compute the diameter of the binary tree
-        # The diameter is the length of the longest path between any two nodes in the tree.
-        # This path may or may not pass through the root.
+        def longest_path(node):
+            if not node:
+                return 0
+            self.diameter
+            # recursively find the longest path in
+            # both left child and right child
+            left_path = longest_path(node.left)
+            right_path = longest_path(node.right)
 
-        if not root:
-            # If the tree is empty, the diameter is 0
-            return 0
+            # update the diameter if left_path plus right_path is larger
+            self.diameter = max(self.diameter, left_path + right_path)
 
-        # Update the diameter by considering the sum of left and right depths from the current node
-        self.ans = max(self.ans, self._depth(root.left) + self._depth(root.right) + 1)
+            # return the longest one between left_path and right_path;
+            # remember to add 1 for the path connecting the node and its parent
+            return max(left_path, right_path) + 1
 
-        # Recursively compute the diameter for the left and right subtrees
-        self.diameterOfBinaryTree(root.left)
-        self.diameterOfBinaryTree(root.right)
-
-        # The result is the maximum diameter found minus 1 (to account for the number of edges)
-        return self.ans - 1
-
-    def _depth(self, root):
-        # Helper function to calculate the depth (or height) of a subtree
-        # The depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
-
-        if not root:
-            # If the node is None, the depth is 0
-            return 0
-
-        # Recursively calculate the depth of the left and right subtrees
-        L = self._depth(root.left)
-        R = self._depth(root.right)
-
-        # The depth of the current node is 1 plus the maximum of the depths of its left and right subtrees
-        return max(L, R) + 1
+        longest_path(root)
+        return self.diameter
 
 
 # Example usage:

@@ -27,6 +27,20 @@ class Solution:
 
         return dfs(nestedList,1)
 
+    # LEETCODE VERSION
+    # class Solution:
+    #     def depthSum(self, nestedList):
+    #         def dfs(lt, lvl):
+    #             ans = 0
+    #             for i in lt:
+    #                 if i.isInteger():
+    #                     ans += i.getInteger() * lvl
+    #                 else:
+    #                     ans += dfs(i.getList(), lvl + 1)
+    #             return ans
+    #
+    #         return dfs(nestedList, 1)
+
 X = Solution()
 print(X.depthSum([1,[4,[6]]]))
 
