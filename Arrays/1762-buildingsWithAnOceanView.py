@@ -5,18 +5,16 @@ class Solution:
         if not heights:
             return []
 
+        ans = []
+
         max_height = -1
-        res = deque()  # Use a deque to efficiently append to the left
 
-        # Traverse the list from the end to the beginning
         for i in range(len(heights) - 1, -1, -1):
-            cur_height = heights[i]
-            # If the current building's height is greater than the maximum height seen so far
-            if cur_height > max_height:
-                res.appendleft(i)  # Add the building index to the front of the deque
-                max_height = cur_height  # Update the maximum height
+            if heights[i] > max_height:
+                ans.append(i)
+                max_height = heights[i]
 
-        return list(res)  # Convert deque to list before returning
+        return ans[::-1]
 
 # Example usage
 X = Solution()

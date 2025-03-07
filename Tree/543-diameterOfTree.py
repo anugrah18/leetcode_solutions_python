@@ -15,7 +15,6 @@ class Solution(object):
         def longest_path(node):
             if not node:
                 return 0
-            self.diameter
             # recursively find the longest path in
             # both left child and right child
             left_path = longest_path(node.left)
