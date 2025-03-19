@@ -7,18 +7,18 @@ class TreeNode:
 
 
 class Solution:
+    # To maintain left-to-right order for nodes with the same (column, row)
+    index  = 0
     def verticalOrder(self, root):
         if not root:
             return []  # Handle empty tree case
 
         node_list = []
-        index = 0  # To maintain left-to-right order for nodes with the same (column, row)
 
         def DFS(col, row, node):
-            nonlocal index
             if node:
-                node_list.append((col, row, index, node.val))
-                index += 1  # Increase index to preserve order
+                node_list.append((col, row, self.index, node.val))
+                self.index += 1  # Increase index to preserve order
                 DFS(col - 1, row + 1, node.left)  # Left child goes left
                 DFS(col + 1, row + 1, node.right)  # Right child goes right
 

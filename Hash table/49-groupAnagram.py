@@ -1,7 +1,5 @@
 class Solution:
     def groupAnagrams(self, strs):
-        # Initialize the result list to store groups of anagrams
-        res = []
 
         # Edge case: if there is only one string in the input, return it as a single group
         if len(strs) == 1:
@@ -22,12 +20,8 @@ class Solution:
             # Append the original string to the list corresponding to its sorted key
             ht[sorted_key].append(s)
 
-        # Add each group of anagrams from the hash table to the result list
-        for key in ht:
-            res.append(ht[key])
-
         # Return the list of groups of anagrams
-        return res
+        return list(ht.values())
 
 # Create an instance of the Solution class
 X = Solution()

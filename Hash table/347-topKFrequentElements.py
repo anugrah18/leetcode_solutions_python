@@ -24,3 +24,6 @@ class Solution:
 # Example usage
 X = Solution()
 print(X.topKFrequent([1,1,1,2,2,3], 2))  # Expected output: [1, 2]
+
+# Time Complexity : O(NLogN) where N = number of elements
+# Space Complexity : O(N)
