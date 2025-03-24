@@ -27,7 +27,6 @@ class Solution:
 X = Solution()
 print(X.generateParenthesis(3))
 
-# Time Complexity = O((4^n/sqrt(n)) , where n is the given input n. There are 2n characters
+# Time Complexity = O((4^N/sqrt(N)) , where n is the given input n. There are 2n characters
 # and four possibiliies
-# Space Complexity = O((4^n/sqrt(n)) ,the number of recursive calls is proportional to the
-# number of valid combinations generated.
+# Space Complexity = O(N)
