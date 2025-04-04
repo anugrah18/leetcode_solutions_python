@@ -26,4 +26,4 @@ X = Solution()
 print(X.subsets([1, 2, 3]))
 
 # Time Complexity : O(n*2^n)
-# Space Complexity : O(2^n)
+# Space Complexity : O(n*2^n)
