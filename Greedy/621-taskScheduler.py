@@ -2,7 +2,7 @@ import heapq
 
 class Solution:
 # Using Greedy approach.
-# Time Complexity : O(N) , N = number of tasks
+# Time Complexity : O(NLogN) , N = number of tasks
 # Space Complexity : O(1)
     def leastInterval_I(self, tasks, n):
 
