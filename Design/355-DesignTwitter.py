@@ -63,11 +63,11 @@ class Twitter:
 
 
 # Simulate usage
-twitter = Twitter()                    # "Twitter"         -> null
-twitter.postTweet(1, 5)               # "postTweet"       -> null
-print(twitter.getNewsFeed(1))        # "getNewsFeed"     -> [5]
-twitter.follow(1, 2)                  # "follow"          -> null
-twitter.postTweet(2, 6)               # "postTweet"       -> null
-print(twitter.getNewsFeed(1))        # "getNewsFeed"     -> [6, 5]
-twitter.unfollow(1, 2)                # "unfollow"        -> null
-print(twitter.getNewsFeed(1))        # "getNewsFeed"     -> [5]
+twitter = Twitter()  # "Twitter"         -> null
+twitter.postTweet(1, 5)  # "postTweet"       -> null
+print(twitter.getNewsFeed(1))  # "getNewsFeed"     -> [5]
+twitter.follow(1, 2)  # "follow"          -> null
+twitter.postTweet(2, 6)  # "postTweet"       -> null
+print(twitter.getNewsFeed(1))  # "getNewsFeed"     -> [6, 5]
+twitter.unfollow(1, 2)  # "unfollow"        -> null
+print(twitter.getNewsFeed(1))  # "getNewsFeed"     -> [5]

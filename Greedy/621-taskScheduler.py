@@ -1,9 +1,10 @@
 import heapq
 
+
 class Solution:
-# Using Greedy approach.
-# Time Complexity : O(NLogN) , N = number of tasks
-# Space Complexity : O(1)
+    # Using Greedy approach.
+    # Time Complexity : O(N , N = number of tasks , sorting is of constant number
+    # Space Complexity : O(1)
     def leastInterval_I(self, tasks, n):
 
         freq = [0] * 26
@@ -23,9 +24,9 @@ class Solution:
 
         return idle_time + len(tasks)
 
-# Using maxHeap.
-# Time Complexity : O(N) , N = number of tasks
-# Space Complexity : O(N)
+    # Using maxHeap.
+    # Time Complexity : O(NlogU) , N = number of tasks, U = Unique tasks
+    # Space Complexity : O(N)
     def leastInterval_II(self, tasks, n):
         dict = {}
         maxHeap = []
@@ -53,6 +54,6 @@ class Solution:
         return time
 
 
-X =Solution()
-print(X.leastInterval_I(["A","A","A","A","A","A","B","C","D","E","F","G"],2))
-print(X.leastInterval_II(["A","A","A","A","A","A","B","C","D","E","F","G"],2))
+X = Solution()
+print(X.leastInterval_I(["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2))
+print(X.leastInterval_II(["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2))
