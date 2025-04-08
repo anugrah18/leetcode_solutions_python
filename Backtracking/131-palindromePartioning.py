@@ -1,7 +1,7 @@
 class Solution:
     def partition(self, s):
-        res = []       # Final result: list of all valid palindrome partitions
-        part = []      # Current partition being built
+        res = []  # Final result: list of all valid palindrome partitions
+        part = []  # Current partition being built
 
         # DFS helper to explore all partitions starting at index i
         def dfs(i):
@@ -15,7 +15,7 @@ class Solution:
                 # Only proceed if s[i:j+1] is a palindrome
                 if self.isPali(s, i, j):
                     # Include the palindrome in the current partition
-                    part.append(s[i:j+1])
+                    part.append(s[i:j + 1])
                     # Recurse from the next index
                     dfs(j + 1)
                     # Backtrack: remove last added substring and try a different cut
@@ -35,3 +35,6 @@ class Solution:
 
 X = Solution()
 print(X.partition("aab"))
+
+# Time Complexity : O(n * 2^n)
+# Space Complexity : O(n * 2^n)
