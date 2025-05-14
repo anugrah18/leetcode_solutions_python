@@ -1,36 +1,39 @@
 class Solution:
+    def __init__(self):
+        self.graph = {}
+
+    def addEdge(self, u, v):
+        # Add the edge to the graph in both directions (undirected)
+        if u not in self.graph:
+            self.graph[u] = []
+        if v not in self.graph:
+            self.graph[v] = []
+        self.graph[u].append(v)
+        self.graph[v].append(u)
+
+    def hasPath(self, start, end, visited):
+        # DFS to check if a path exists from start to end
+        if start == end:
+            return True
+        visited.add(start)
+
+        for neighbor in self.graph.get(start, []):
+            if neighbor not in visited:
+                if self.hasPath(neighbor, end, visited):
+                    return True
+        return False
+
     def findRedundantConnection(self, edges):
-        # Helper function to check if there is a path from 'start' to 'end' using DFS
-        def has_path(graph, start, end, visited):
-            if start == end:
-                return True
-            visited.add(start)
-            if start in graph:
-                for neighbor in graph[start]:
-                    if neighbor not in visited:
-                        if has_path(graph, neighbor, end, visited):
-                            return True
-            return False
-
-        # Initialize an empty graph using a dictionary
-        graph = {}
-
-        # Iterate through each edge
         for u, v in edges:
             visited = set()
 
-            # If both nodes already exist in the graph and there is a path between them,
-            # then adding this edge would form a cycle — it's redundant
-            if u in graph and v in graph and has_path(graph, u, v, visited):
+            # Check if adding this edge would form a cycle
+            if u in self.graph and v in self.graph and self.hasPath(u, v, visited):
                 return [u, v]
 
-            # Add the edge to the graph (bidirectional since the graph is undirected)
-            if u not in graph:
-                graph[u] = []
-            if v not in graph:
-                graph[v] = []
-            graph[u].append(v)
-            graph[v].append(u)
+            # Otherwise, add the edge to the graph
+            self.addEdge(u, v)
+
 
 
 X = Solution()
