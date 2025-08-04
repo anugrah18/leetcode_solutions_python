@@ -1,21 +1,23 @@
 class Solution:
     def canJump(self, nums):
-        # Initialize lastPos to the last index of the array
+        # Initialize lastPos as the last index (target to reach)
         lastPos = len(nums) - 1
 
-        # Iterate from the second last element to the first element
+        # Start from the last index and move backwards
         i = len(nums) - 1
 
         while i >= 0:
-            # If the current element can reach or exceed lastPos, update lastPos to the current index
+            # Check if you can jump from index i to lastPos (or beyond)
             if nums[i] + i >= lastPos:
+                # If yes, then update lastPos to current index
+                # because now we need to check if we can reach this index
                 lastPos = i
-            # Move to the previous element
+            # Move to the previous index
             i -= 1
 
-        # If lastPos is 0, it means we can reach the end from the start
+        # If we managed to push lastPos all the way back to 0,
+        # then we can reach the end from the start
         return lastPos == 0
-
 
 X = Solution()
 print(X.canJump([2,3,1,1,4]))

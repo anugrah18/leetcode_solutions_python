@@ -1,17 +1,25 @@
 class Solution:
-    def canCompleteCircuit(self,gas,cost):
-
+    def canCompleteCircuit(self, gas, cost):
+        # total_cost: net gas gain/loss across all stations
+        # curr_cost: gas available in the current segment (between resets)
+        # start_pos: index of the potential starting station
         total_cost = curr_cost = start_pos = 0
 
-        for i in range(0,len(gas)):
-            total_cost = total_cost + gas[i]-cost[i]
-            curr_cost = curr_cost + gas[i]-cost[i]
+        # Iterate through all stations
+        for i in range(len(gas)):
+            # Net gas at this station: gas[i] - cost[i]
+            total_cost += gas[i] - cost[i]
+            curr_cost += gas[i] - cost[i]
 
-            if(curr_cost<0):
+            # If we can't reach the next station from current path
+            if curr_cost < 0:
+                # Start fresh from the next station
                 curr_cost = 0
-                start_pos = i+1
+                start_pos = i + 1
 
-        return start_pos if total_cost >=0 else -1
+        # If total gas is enough to cover total cost, return starting station
+        # Otherwise, return -1 (not possible to complete the circuit)
+        return start_pos if total_cost >= 0 else -1
 
 
 X = Solution()
